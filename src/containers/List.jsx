@@ -9,7 +9,7 @@ class List extends Component {
     const { offices } = this.props;
     console.log(offices);
     return (
-      <div>
+      <div className='list'>
         {offices.map( office => <ListItem key={office.id} office={office} />)}
       </div>
     );
