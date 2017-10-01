@@ -1,0 +1,35 @@
+.list-item {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0 10px 10px;
+}
+
+.no-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #D3D3D3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-item-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #778899;
+  flex: 1;
+}
+
+.list-item-main-name {
+  color: #FFF;
+  font-size: 20px;
+  padding-bottom: 2px;
+}
+
+.list-item-main-description {
+  color: 		#696969;
+}

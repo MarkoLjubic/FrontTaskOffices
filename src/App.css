@@ -13,8 +13,9 @@
 
 .app-header {
   color: #FFF;
-  width: 300px;
+  width: 250px;
   padding-left: 10px;
+  font-size: 30px;
 }
 
 .nav {
