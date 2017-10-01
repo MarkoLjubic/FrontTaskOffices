@@ -1,26 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../styles/ListItem.css'
+import '../styles/GridItem.css';
 import Avatar from './Avatar';
 
-function ListItem ({ office }) {
-  const toLong = office.description.length > 60;
+function GridItem ({ office }) {
+  const toLong = office.description.length > 90;
   return (
-    <div className='list-item'>
-      <div>
+    <div className='grid-item'>
+      <div className='grid-avatar-wrapper'>
         {office.photo
           ? <Avatar imageLink={office.photo} />
         : <div className='no-avatar'>{office.name.slice(0,1).toUpperCase()}</div>
         }
       </div>
-      <div className='list-item-main'>
-        <div className='list-item-main-name'>
+      <div className='grid-item-main'>
+        <div className='grid-item-main-name'>
           {office.name}
         </div>
-        <div className='list-item-main-description'>
+        <div className='grid-item-main-description'>
           {toLong
-            ? <div>{office.description.slice(0, 60)}...</div>
+            ? <div>{office.description.slice(0, 90)}...</div>
             : office.description
           }
         </div>
@@ -29,13 +29,13 @@ function ListItem ({ office }) {
   );
 }
 
-ListItem.defaultProps = {
+GridItem.defaultProps = {
   office: {},
 }
 
-ListItem.propTypes = {
+GridItem.propTypes = {
   office: PropTypes.object,
 }
 
 
-export default ListItem;
+export default GridItem;
