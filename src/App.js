@@ -5,7 +5,7 @@ import './App.css';
 import { axios } from './utilities/utilities';
 import List from './containers/List';
 import Grid from './containers/Grid';
-import Map from './containers/Map';
+import { Map } from './containers/Map';
 
 class App extends Component {
   constructor(props){
