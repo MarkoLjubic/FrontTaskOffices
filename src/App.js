@@ -42,7 +42,7 @@ class App extends Component {
             <Redirect exact from='/' to='/Offices/List' />
             <Route path='/Offices/List' render={() => <List offices={this.state.offices}/>} />
             <Route path='/Offices/Grid' render={() => <Grid offices={this.state.offices}/>} />
-            <Route path='/Offices/Map' component={Map} />
+            <Route path='/Offices/Map' render={() => <Map />} />
           </Switch>
         </div>
       </div>

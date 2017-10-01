@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import { withGoogleMap, GoogleMap, withScriptjs } from 'react-google-maps';
+import { compose, withProps } from "recompose";
 
-import { googleMapKey } from '../utilities/utilities';
+import { googleMapURL } from '../utilities/utilities';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const Gmap = compose(
+  withProps({
+    googleMapURL,
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `400px` }} />,
+    mapElement: <div style={{ height: `100%` }} />,
+  }),
+  withScriptjs,
+  withGoogleMap
+)(props =>
+  <GoogleMap
+    defaultZoom={2}
+    defaultCenter={{ lat: 33.4, lng: 18.2 }}
+  >
+  </GoogleMap>
+)
 
 class Map extends Component {
-  static defaultProps = {
-    center: {lat: 59.95, lng: 30.33},
-    zoom: 11
-  };
-
   render() {
     return (
-      <GoogleMapReact
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
-        bootstrapURLKeys={{key: 'AIzaSyB684drDb6FuYxTrMhlE09NZtiUH0qKLT4'}}
-      >
-        <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text={'Kreyser Avrora'}
-        />
-      </GoogleMapReact>
+      <div className="map-wrapper">
+        <Gmap />
+      </div>
     );
   }
 }
