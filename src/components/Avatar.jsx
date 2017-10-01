@@ -6,7 +6,7 @@ import '../styles/Avatar.css'
 function Avatar ({ imageLink }) {
   return (
     <div className='avatar'>
-      <img src={imageLink} />
+      <img src={imageLink} alt='office' />
     </div>
   );
 }
