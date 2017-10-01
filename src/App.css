@@ -1,0 +1,38 @@
+.app {
+  border: 2px solid #708090;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial;
+}
+
+.app-heading {
+  display: flex;
+  flex-direction: row;
+  background-color: #20B2AA;
+}
+
+.app-header {
+  color: #FFF;
+  width: 300px;
+  padding-left: 10px;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav a {
+  text-decoration: none;
+  display: flex;
+  width: 100px;
+  color: #FFF;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid #20B2AA;
+}
+
+.nav a.active {
+  border-bottom: 5px solid #90EE90;
+}
