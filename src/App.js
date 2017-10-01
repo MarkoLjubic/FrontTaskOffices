@@ -36,12 +36,14 @@ class App extends Component {
               <NavLink to={'/Offices/Map'}>Map</NavLink>
           </div>
         </div>
-        <Switch>
-          <Redirect exact from='/' to='/Offices/List' />
-          <Route path='/Offices/List' render={() => <List offices={this.state.offices}/>} />
-          <Route path='/Offices/Grid' component={Empty} />
-          <Route path='/Offices/Map' component={Empty} />
-        </Switch>
+        <div className='route-wrapper'>
+          <Switch>
+            <Redirect exact from='/' to='/Offices/List' />
+            <Route path='/Offices/List' render={() => <List offices={this.state.offices}/>} />
+            <Route path='/Offices/Grid' component={Empty} />
+            <Route path='/Offices/Map' component={Empty} />
+          </Switch>
+        </div>
       </div>
     );
   }
