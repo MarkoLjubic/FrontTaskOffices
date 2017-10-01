@@ -1,10 +1,80 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, withScriptjs } from 'react-google-maps';
+import { withGoogleMap,
+  GoogleMap,
+  withScriptjs,
+  Marker,
+  InfoWindow
+} from 'react-google-maps';
 import { compose, withProps } from "recompose";
 
 import { googleMapURL } from '../utilities/utilities';
+import '../styles/Map.css';
 
-const Gmap = compose(
+class innerMap extends Component {
+  constructor(props){
+    super(props);
+
+    this.state={
+      isOpen: -1,
+    }
+
+    this.showInfo = this.showInfo.bind(this);
+    this.hideInfo = this.hideInfo.bind(this);
+  }
+
+  showInfo(id) {
+    this.setState({
+      isOpen: id,
+    });
+  }
+
+  hideInfo() {
+    this.setState({
+      isOpen: -1,
+    });
+  }
+
+  render() {
+    const { offices } = this.props;
+    const { isOpen } = this.state;
+    return (
+      <GoogleMap
+        defaultZoom={2}
+        defaultCenter={{ lat: 33.4, lng: 18.2 }}
+        onClick={() => this.hideInfo()}
+      >
+        {offices
+          .map(office =>
+            <Marker
+              key={office.id}
+              position={{
+                lat: parseFloat(office.latitude),
+                lng: parseFloat(office.longitude),
+              }}
+              onClick={() => this.showInfo(office.id)}
+            >
+            {isOpen === office.id && <InfoWindow>
+              <div>
+                <div className='marker-header'>
+                  {office.name}
+                </div>
+                <div className='marker-description'>
+                  {office.description.length > 60
+                    ? <div>{office.description.slice(0, 60)}...</div>
+                    : office.description
+                  }
+                </div>
+              </div>
+            </InfoWindow>}
+            </Marker>
+          )
+        }
+      </GoogleMap>
+    );
+  }
+}
+
+export const Map = compose(
   withProps({
     googleMapURL,
     loadingElement: <div style={{ height: `100%` }} />,
@@ -13,22 +83,4 @@ const Gmap = compose(
   }),
   withScriptjs,
   withGoogleMap
-)(props =>
-  <GoogleMap
-    defaultZoom={2}
-    defaultCenter={{ lat: 33.4, lng: 18.2 }}
-  >
-  </GoogleMap>
-)
-
-class Map extends Component {
-  render() {
-    return (
-      <div className="map-wrapper">
-        <Gmap />
-      </div>
-    );
-  }
-}
-
-export default Map;
+)(innerMap);
