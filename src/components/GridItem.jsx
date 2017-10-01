@@ -1,25 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../styles/GridItem.css';
 import Avatar from './Avatar';
 
 function GridItem ({ office }) {
-  const toLong = office.description.length > 60;
+  const toLong = office.description.length > 90;
   return (
-    <div>
-      <div>
+    <div className='grid-item'>
+      <div className='grid-avatar-wrapper'>
         {office.photo
           ? <Avatar imageLink={office.photo} />
-        : <div>{office.name.slice(0,1).toUpperCase()}</div>
+        : <div className='no-avatar'>{office.name.slice(0,1).toUpperCase()}</div>
         }
       </div>
-      <div>
-        <div>
+      <div className='grid-item-main'>
+        <div className='grid-item-main-name'>
           {office.name}
         </div>
-        <div>
+        <div className='grid-item-main-description'>
           {toLong
-            ? <div>{office.description.slice(0, 60)}...</div>
+            ? <div>{office.description.slice(0, 90)}...</div>
             : office.description
           }
         </div>

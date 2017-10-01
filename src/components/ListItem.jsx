@@ -8,7 +8,7 @@ function ListItem ({ office }) {
   const toLong = office.description.length > 60;
   return (
     <div className='list-item'>
-      <div className='list-item-avatar'>
+      <div>
         {office.photo
           ? <Avatar imageLink={office.photo} />
         : <div className='no-avatar'>{office.name.slice(0,1).toUpperCase()}</div>

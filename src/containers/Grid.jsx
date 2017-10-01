@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import '../styles/Grid.css';
 import GridItem from '../components/GridItem';
 
 class Grid extends Component {
