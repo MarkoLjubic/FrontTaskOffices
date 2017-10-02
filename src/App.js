@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Route, Redirect, Switch, NavLink } from 'react-router-dom';
 
 import './App.css';
-import { axios } from './utilities/utilities';
+import { axios, apiURL, headerLinks } from './utilities/utilities';
 import List from './containers/List';
 import Grid from './containers/Grid';
 import { Map } from './containers/Map';
+import Header from './components/Header';
 
 class App extends Component {
   constructor(props){
@@ -23,26 +24,21 @@ class App extends Component {
   }
 
   getOfficies() {
-    axios.get('https://itk-exam-api.herokuapp.com/api/offices').then(response => this.setState({offices: response.data}))
+    axios
+    .get(apiURL)
+    .then(response => this.setState({offices: response.data}));
   }
 
   render() {
     return (
       <div className={'app'}>
-        <div className={'app-heading'}>
-          <h2 className={'app-header'}>Offices</h2>
-          <div className={'nav'}>
-              <NavLink to={'/Offices/List'}>List</NavLink>
-              <NavLink to={'/Offices/Grid'}>Grid</NavLink>
-              <NavLink to={'/Offices/Map'}>Map</NavLink>
-          </div>
-        </div>
+        <Header links={headerLinks} />
         <div className='route-wrapper'>
           <Switch>
             <Redirect exact from='/' to='/Offices/List' />
-            <Route path='/Offices/List' render={() => <List offices={this.state.offices}/>} />
-            <Route path='/Offices/Grid' render={() => <Grid offices={this.state.offices}/>} />
-            <Route path='/Offices/Map' render={() => <Map offices={this.state.offices}/>} />
+            <Route path={headerLinks[0].link} render={() => <List offices={this.state.offices}/>} />
+            <Route path={headerLinks[1].link} render={() => <Grid offices={this.state.offices}/>} />
+            <Route path={headerLinks[2].link} render={() => <Map offices={this.state.offices}/>} />
           </Switch>
         </div>
       </div>

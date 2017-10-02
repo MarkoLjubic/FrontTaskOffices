@@ -78,7 +78,7 @@ export const Map = compose(
   withProps({
     googleMapURL,
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
+  containerElement: <div style={{ height: `600px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,

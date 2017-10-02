@@ -1,0 +1,50 @@
+.app-heading {
+  display: flex;
+  flex-direction: row;
+  background-color: #20B2AA;
+}
+
+.app-header {
+  color: #FFF;
+  width: 250px;
+  padding-left: 10px;
+  font-size: 30px;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav a {
+  text-decoration: none;
+  display: flex;
+  width: 100px;
+  color: #FFF;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid #20B2AA;
+}
+
+.nav a.active {
+  border-bottom: 5px solid #90EE90;
+}
+
+@media only screen and (max-width: 450px) {
+  .app-heading {
+    flex-direction: column;
+    height: 120px;
+  }
+
+  .app-header {
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+  }
+}
