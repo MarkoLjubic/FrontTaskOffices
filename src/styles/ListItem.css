@@ -20,6 +20,7 @@
   justify-content: center;
   margin-left: 15px;
   padding-bottom: 15px;
+  padding-right: 10px;
   border-bottom: 1px solid #778899;
   flex: 1;
 }
@@ -32,4 +33,10 @@
 
 .list-item-main-description {
   color: 		#696969;
+}
+
+@media only screen and (max-width: 450px) {
+  .list-item {
+    margin-left: 1%;
+  }
 }
