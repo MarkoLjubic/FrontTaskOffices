@@ -7,6 +7,7 @@ import List from './containers/List';
 import Grid from './containers/Grid';
 import { Map } from './containers/Map';
 import Header from './components/Header';
+import Loader from './components/Loader';
 
 class App extends Component {
   constructor(props){
@@ -14,6 +15,7 @@ class App extends Component {
 
     this.state = {
       offices: [],
+      loaderShow: true,
     }
 
     this.getOfficies = this.getOfficies.bind(this);
@@ -26,7 +28,11 @@ class App extends Component {
   getOfficies() {
     axios
     .get(apiURL)
-    .then(response => this.setState({offices: response.data}));
+    .then(response => this.setState({
+        offices: response.data,
+        loaderShow: false,
+      })
+    );
   }
 
   render() {
@@ -34,12 +40,15 @@ class App extends Component {
       <div className={'app'}>
         <Header links={headerLinks} />
         <div className='route-wrapper'>
-          <Switch>
-            <Redirect exact from='/' to='/Offices/List' />
-            <Route path={headerLinks[0].link} render={() => <List offices={this.state.offices}/>} />
-            <Route path={headerLinks[1].link} render={() => <Grid offices={this.state.offices}/>} />
-            <Route path={headerLinks[2].link} render={() => <Map offices={this.state.offices}/>} />
-          </Switch>
+          {this.state.loaderShow
+            ? <Loader />
+            : <Switch>
+                <Redirect exact from='/' to='/Offices/List' />
+                <Route path={headerLinks[0].link} render={() => <List offices={this.state.offices}/>} />
+                <Route path={headerLinks[1].link} render={() => <Grid offices={this.state.offices}/>} />
+                <Route path={headerLinks[2].link} render={() => <Map offices={this.state.offices}/>} />
+              </Switch>
+          }
         </div>
       </div>
     );
