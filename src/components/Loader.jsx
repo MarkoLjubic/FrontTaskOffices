@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import '../styles/Loader.css'
 
-function Loader ({ imageLink }) {
+function Loader () {
   return (
     <div className='loader-wrapper'>
       <div className='loader' />

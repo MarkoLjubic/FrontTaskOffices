@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import '../styles/List.css';
-import ListItem from '../components/ListItem';
+import Item from '../components/Item';
 
 class List extends Component {
   render() {
-    const { offices } = this.props;
-    console.log(offices);
+    const { offices, direction } = this.props;
     return (
-      <div className='list'>
-        {offices.map( office => <ListItem key={office.id} office={office} />)}
+      <div className={`${direction}`}>
+        {offices.map( office => <Item key={office.id} office={office} direction={direction} />)}
       </div>
     );
   }
@@ -18,10 +17,12 @@ class List extends Component {
 
 List.defaultProps = {
   offices: [],
+  direction: 'list',
 };
 
 List.propTypes = {
   offices: PropTypes.arrayOf(PropTypes.object),
+  direction: PropTypes.string,
 };
 
 

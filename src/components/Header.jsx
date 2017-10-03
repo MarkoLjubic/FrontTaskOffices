@@ -9,7 +9,7 @@ function Header ({ links }) {
     <div className={'app-heading'}>
       <h2 className={'app-header'}>Offices</h2>
       <div className={'nav'}>
-        {links.map(link => <NavLink to={link.link}>{link.name}</NavLink>)}
+        {links.map(link => <NavLink key={link.name} to={link.link}>{link.name}</NavLink>)}
       </div>
     </div>
   );

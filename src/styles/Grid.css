@@ -1,8 +1,0 @@
-.grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  background-color: #20B2AA;
-  padding: 20px 0 50px 0;
-}

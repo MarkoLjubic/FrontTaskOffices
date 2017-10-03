@@ -7,7 +7,7 @@ import { withGoogleMap,
 } from 'react-google-maps';
 import { compose, withProps } from "recompose";
 
-import { googleMapURL } from '../utilities/utilities';
+import { googleMapURL } from '../utilities/config';
 import '../styles/Map.css';
 
 class innerMap extends Component {
