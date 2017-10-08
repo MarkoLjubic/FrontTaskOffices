@@ -9,7 +9,7 @@ function Header ({ links }) {
     <div className={'app-heading'}>
       <h2 className={'app-header'}>Offices</h2>
       <div className={'nav'}>
-        {links.map(link => <NavLink key={link.name} to={link.link}>{link.name}</NavLink>)}
+        {Object.keys(links).map(key => <NavLink key={links[key].name} to={links[key].link}>{links[key].name}</NavLink>)}
       </div>
     </div>
   );
@@ -20,7 +20,7 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-  links: PropTypes.arrayOf(PropTypes.object),
+  links: PropTypes.object,
 }
 
 

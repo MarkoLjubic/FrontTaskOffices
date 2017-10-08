@@ -32,7 +32,8 @@ class App extends Component {
         offices: response.data,
         loaderShow: false,
       })
-    );
+    )
+    .catch( error =>  console.log(error));
   }
 
   render() {
@@ -44,9 +45,9 @@ class App extends Component {
             ? <Loader />
             : <Switch>
                 <Redirect exact from='/' to='/Offices/List' />
-                <Route path={headerLinks[0].link} render={() => <List offices={this.state.offices} direction='list'/>} />
-                <Route path={headerLinks[1].link} render={() => <List offices={this.state.offices} direction='grid'/>} />
-                <Route path={headerLinks[2].link} render={() => <Map offices={this.state.offices}/>} />
+                <Route path={headerLinks.List.link} render={() => <List offices={this.state.offices} direction='list'/>} />
+                <Route path={headerLinks.Grid.link} render={() => <List offices={this.state.offices} direction='grid'/>} />
+                <Route path={headerLinks.Map.link} render={() => <Map offices={this.state.offices}/>} />
               </Switch>
           }
         </div>

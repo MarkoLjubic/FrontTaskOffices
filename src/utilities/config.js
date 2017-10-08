@@ -2,17 +2,17 @@ export const googleMapURL = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA
 
 export const apiURL = 'https://itk-exam-api.herokuapp.com/api/offices';
 
-export const headerLinks = [
-  {
+export const headerLinks = {
+  List: {
     link: '/Offices/List',
     name: 'List',
   },
-  {
+  Grid: {
     link: '/Offices/Grid',
     name: 'Grid',
   },
-  {
+  Map: {
     link: '/Offices/Map',
     name: 'Map',
   },
-];
+};

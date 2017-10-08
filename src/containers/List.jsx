@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../styles/List.css';
 import Item from '../components/Item';
+import { officesModel } from '../utilities/models';
 
 class List extends Component {
   render() {
@@ -21,7 +22,7 @@ List.defaultProps = {
 };
 
 List.propTypes = {
-  offices: PropTypes.arrayOf(PropTypes.object),
+  offices: officesModel(PropTypes),
   direction: PropTypes.string,
 };
 

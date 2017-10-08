@@ -6,9 +6,11 @@ import { withGoogleMap,
   InfoWindow
 } from 'react-google-maps';
 import { compose, withProps } from "recompose";
+import PropTypes from 'prop-types';
 
 import { googleMapURL } from '../utilities/config';
 import '../styles/Map.css';
+import { officesModel } from '../utilities/models';
 
 class innerMap extends Component {
   constructor(props){
@@ -73,6 +75,14 @@ class innerMap extends Component {
     );
   }
 }
+
+innerMap.defaultProps = {
+  offices: [],
+}
+
+innerMap.propTypes = {
+  offices: officesModel(PropTypes),
+};
 
 export const Map = compose(
   withProps({
